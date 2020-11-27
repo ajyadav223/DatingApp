@@ -14,10 +14,17 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(){
     const token = localStorage.getItem('token');
+    const user =JSON.parse(localStorage.getItem('user'));
     if(token)
     {
 
-      this.authService.decodedToken= this.jwtHelper.decodeToken(token);
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+    }
+    if(user)
+    {
+      this.authService.currentUser = user;
+      // stores the current photo into Auth service which we are storing in Locale storage
+      this.authService.changeMemberPhoto(user.photoUrl);
     }
   }
 

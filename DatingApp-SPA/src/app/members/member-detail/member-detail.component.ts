@@ -21,7 +21,7 @@ galleryImages: NgxGalleryImage[];
 
   ngOnInit() {
    this.route.data.subscribe(data =>{
-     this.user =data['user'];
+     this.user = data['user'];
    });
 
    this.galleryOptions=[
@@ -36,27 +36,22 @@ galleryImages: NgxGalleryImage[];
      }
    ]
 
-   this.galleryImages= this.getImages();
+   this.galleryImages = this.getImages();
   }
 
-  getImages(){
+getImages(){
 const ImgUrls = [];
 for (const photo of this.user.photos) {
   ImgUrls.push({
-    small:photo.url,
-    medium:photo.url,
-    big:photo.url,
-    description:photo.description
+    small: photo.url,
+    medium: photo.url,
+    big: photo.url,
+    description: photo.description
   });
-  return  ImgUrls;
+  
 }
-
+   return  ImgUrls;
   }
-  //  loadUser(){
-  //   this.userService.getUser(+this.route.snapshot.params['id']).subscribe((user:User) => {
-  //   this.user=user;
-  // },error =>{
-  //   this.alertify.error(error);
-  // });
+  
 
 }

@@ -14,6 +14,7 @@ import { UserService } from 'src/app/_services/user.service';
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm',{static :true}) editForm: NgForm;
   user: User;
+  photoUrl: string;
 @HostListener('window:beforeunload',['$event'])
 unloadNotification($event:any)
 {
@@ -27,7 +28,14 @@ unloadNotification($event:any)
   ngOnInit() {
     this.route.data.subscribe(data =>{
       this.user = data['user'];
+      console.log( "User Datain member edit");
+      console.log( this.user);
     });
+
+//To update the current Main photo inside member edit page
+
+    this.auth.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+
   }
   updateUser()
   {
@@ -39,4 +47,10 @@ unloadNotification($event:any)
     });
 
   }
+  updateMainPhoto(photoUrl){
+  this.user.photoUrl= photoUrl;
+
+  }
+  
+
 }

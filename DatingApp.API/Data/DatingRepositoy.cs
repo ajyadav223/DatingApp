@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DatingApp.API.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DatingApp.API.Data
 {
@@ -13,15 +14,27 @@ namespace DatingApp.API.Data
             _context= context;
             
         }
-        public void Add<T>(T Entity) where T : class
+        public void Add<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Add(entity);
         }
 
-        public void Delete<T>(T Enity) where T : class
+        public void Delete<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Remove(entity);
         }
+
+        public async Task<Photo>GetPhoto(int id)
+        {
+        var photo= await _context.Photos.FirstOrDefaultAsync(p=>p.Id == id);
+        return photo;
+
+        }
+         public async Task<Photo> GetMainPhotoForUser(int userId)
+         {
+             return await _context.Photos.Where(u =>u.UserId == userId)
+                           .FirstOrDefaultAsync( p => p.IsMain);
+         }
 
         public async Task<User> GetUser(int id)
         {

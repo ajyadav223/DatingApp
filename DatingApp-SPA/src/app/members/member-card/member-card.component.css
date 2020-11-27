@@ -33,3 +33,9 @@ position: relative;
 .animate{
     transition: all 0.3s ease-in-out;
 }
+/* added This As facing issue with newly uploaded (Cinary)images looks bigger in list */
+img{
+    max-height: 150px;
+    border: 2px solid white;
+    display: inline;
+}
