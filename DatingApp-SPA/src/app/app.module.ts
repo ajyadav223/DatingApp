@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './_services/auth.service';
 import {RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -31,6 +31,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { MemberEditResolver } from './resolver/member-Edit.Resolver';
 import {PreventUnsavedChanges} from './_guards/preventUnsavedChanges';
 import {PhotoEditorComponent} from './members/photo-editor/photo-editor.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -54,7 +55,9 @@ export function tokenGetter(){
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
