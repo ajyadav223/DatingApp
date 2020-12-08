@@ -8,6 +8,8 @@ import {AuthService} from './_services/auth.service';
 import {RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FileUploadModule } from 'ng2-file-upload';
+//Added from Git to solve error of Uploader
+//import { FileSelectDirective } from 'ng2-file-upload';
 
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -32,6 +34,7 @@ import { MemberEditResolver } from './resolver/member-Edit.Resolver';
 import {PreventUnsavedChanges} from './_guards/preventUnsavedChanges';
 import {PhotoEditorComponent} from './members/photo-editor/photo-editor.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimeagoModule, TimeagoPipe } from 'ngx-timeago';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -50,6 +53,11 @@ export function tokenGetter(){
       MemberDetailComponent,
       MemberEditComponent,
       PhotoEditorComponent
+      //TimeagoPipe
+
+
+      //added from Git
+     // FileSelectDirective
    ],
   imports: [
     BrowserModule,
@@ -61,6 +69,7 @@ export function tokenGetter(){
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    TimeagoModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
     JwtModule.forRoot({

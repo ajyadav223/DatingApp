@@ -65,7 +65,7 @@ namespace DatingApp.API
             }
             
             );
-           
+           services.AddScoped<LogUserActivity>();
         }
 
         // This method gets called by the runtime.
